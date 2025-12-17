@@ -14,7 +14,7 @@ import(
 func main(){
 	conn, err := sql.Open(
 		"postgres",
-		"postgres://postgres:superuser@loclahost:5432/go_backend?sslmode=disable",
+		"postgres://postgres:superuser@localhost:5432/go_backend?sslmode=disable",
 	)
 	if err != nil {
 		log.Fatal(err)
