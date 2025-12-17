@@ -9,6 +9,8 @@ import(
 
 	db "goBackend/db/sqlc"
 	"goBackend/internal/routes"
+	"goBackend/internal/logger"
+	"goBackend/internal/middleware"
 )
 
 func main(){
@@ -27,6 +29,11 @@ func main(){
 	// app.Get("/",func(c *fiber.Ctx) error{
 	// 	return c.SendString("Go backend is running")
 	// })
+
+	logg := logger.New()
+
+	app.Use(middleware.ResquestID())
+	app.Use(middleware.Logger(logg))
 
 	routes.Register(app, queries)
 
