@@ -3,8 +3,10 @@ package main
 import(
 	"database/sql"
 	"log"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 
 	db "goBackend/db/sqlc"
@@ -14,10 +16,17 @@ import(
 )
 
 func main(){
-	conn, err := sql.Open(
-		"postgres",
-		"postgres://postgres:superuser@localhost:5432/go_backend?sslmode=disable",
-	)
+	if err := godotenv.Load();
+	err != nil {
+		log.Println("no .env")
+	}
+
+	dbURL := os.Getenv("DATABASE_URL")
+	if dbURL == "" {
+		log.Fatal("DB_URL not set")
+	}
+
+	conn, err := sql.Open("postgres", dbURL)
 	if err != nil {
 		log.Fatal(err)
 	}

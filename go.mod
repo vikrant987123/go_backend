@@ -10,6 +10,7 @@ require (
 	github.com/go-playground/validator/v10 v10.29.0 // indirect
 	github.com/gofiber/fiber/v2 v2.52.10 // indirect
 	github.com/google/uuid v1.6.0 // indirect
+	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/lib/pq v1.10.9 // indirect
